@@ -1,0 +1,235 @@
+Dominik Cvetkovski
+095 308 9202
+Napisati mi poruku na whatsapp
+Ime i prezime
+
+Za HZZ - TINA NOVAK tnovak@rk-smz.hr
+
+Matematički zapis:
+
+5 + 8 = 13
+
+Programerski zapis:
+
+13 = 5 + 8
+
+1.)
+x + 8 = 13
+x = 13 - 8
+x = 5
+
+13 = 8 + x
+
+- VARIJABLA - mjesto u memoriji rezervirano za pohranu podataka ovisno o tipu podatka
+
+- INT (int, integer) - za cijele brojeve
+(8, 100, 253, 69420, -2, -911, 0)
+
+npr. 
+int x = 3
+int y = -2
+int z = 0
+
+Koliki je Z ako se u njega sprema zbroj x i y?
+
+z = x + y
+
+2.)
+Napišite 3 varijable vaših naziva koje su sve sa cijelim brojevima. Sve 3 varijable se zbrajaju i zapisuju u četvrtu varijablu naziva "rezultat"
+
+int a = 1
+int b = 3
+int c = 4
+int rezultat = 0
+
+rezultat = a + b + c
+-----------------------------
+
+int vino = 9
+int voda = 7
+int gemišt = 10
+int rezultat = 0
+
+rezultat = vino + voda + gemišt
+
+- FLOAT - float - decimalni brojevi
+(5.3, 6.9, 4.5713412, -3.4, -2.0, 0.0, 0.23)
+	- Kada se koristi float obavezno je staviti f na kraj broja
+	- npr. 5.3f , -24.56f, 0f, 22.1f, 6.0f, 12f .25f
+
+3.) Imate 3 varijable decimalnih brojeva, "mama", "tata" i "beba".
+Neka se u bebu sprema zbroj vrijednosti mame i tate
+
+float mama = 5.6f
+float tata = 25f (25.0f)
+float beba = 0f
+
+beba = mama + tata
+
+4.) Napišite 3 varijable float vrijednosti gdje se od prve oduzima zbroj druge i treće. Rezultat se zapisuje u prvu varijablu.
+
+float humNaSutli = 3.5f
+float kutina = 4.32f
+float zagreb = -8.16f
+
+riješenje 1.
+humNaSutli = humNaSutli - (kutina + zagreb)
+
+rješenje 2. 
+humNaSutli = humNaSutli - kutina - zagreb
+
+rješenje 3.
+humNaSutli -= kutina + zagreb
+
+5.) Koliki je zbroj X i Y ako znamo da je:
+float X = 4.55f
+float Y = 69f
+float XY = 0
+
+XY = X + Y
+
+6.) Zapišite programski sljedeći zapis:
+weed + mars - uho = droga
+uho * 2.5 + pussy = slon
+slon * droga = rezultat
+
+int weed = 420
+int mars = 50
+int uho = 1337
+int pussy = 1
+
+int droga = 0
+float slon = 0f
+float rezultat = 0f
+
+droga = weed + mars - uho
+slon = uho * 2.5f + pussy
+rezultat = slon * droga
+
+7.) Kolika je razlika između x i y ako je x 19, a y je 7.5. Rezultat zapišite u x
+
+flaot x = 19f
+float y = 7.5f
+
+x = x - y || x -= y
+
+8.) Zbrojite x i y ako je x 5, a y je 8.2, a sprema se u y
+
+int x = 5
+float y = 8.2f
+
+y = x + y || y += x
+
+9.) Programski zapišite matematički zapis: 9 + 11 = 20
+Obavezno definirajte i imenujte variajble
+
+int x = 9
+int y = 11
+int z = 0
+
+z = x + y
+
+10.) Početna vrijednost healtha je 100, primamo damage u vrijednosti 17.6, kolika je konačna vrijednost healtha?
+
+float health = 100f
+float damage = 17.6f
+
+health -= damage || health = health - damage
+
+11.) Pretvorite u programski zapis sa vašim vrijednostima
+susjed + mama - tata * krevet = problem
+
+int susjed = 20
+int mama = 7
+int tata = 12
+int krevet = 1
+int problem = 0
+
+problem = susjed + mama - tata * krevet
+
+12.) Pretvorite u programski zapis sa vašim vrijednostima:
+bomba * 2 + teroristi - majmun / 3.2 = wtf
+
+int bomba = 7
+int teroristi = 19
+int majmun = 8
+float wtf = 0f
+
+wtf = bomba * 2 + teroristi - majmun / 3.2f
+
+13.) Na početku vaš lik ima 52 mane, iskoristili ste ability koji košta 4.5 mana i potom ste ga iskoristili još 3 puta.
+Poslje toga popijete potion koji vam da 10 mana.
+Koliko imate mane? Napišite programski.
+
+float mana = 52
+float ability = 4.5f
+int potion = 10
+
+mana -= ability
+mana -= ability * 3
+mana += potion
+|| ili
+mana = mana - ability
+mana = mana - ability * 3
+mana = mana + potion
+
+- Točka zarez ; se piše na kraju linije naredbe
+
+float mama = 56.4f;
+int konj = 3;
+float rez = 0f;
+
+rez = mama + konj;
+
+- Što je to "null", a što je to "0"?
+int rola = 0;
+int rola;
+
+int rollapapira = 5;
+maknemo papire sa role i onda bude
+rollapapira = 0;
+ili
+rollapapira;
+
+14.) Ušli ste u borbu. U šanžeru imate 15 metaka od maksimalnih 20. Ispucali ste ih 4, te potom reloadali šanžer. Napišite to programski, ali obavezno korak po korak.
+
+int maxSanžer = 20;
+int sanžer = 15;
+
+sanžer -= 4;
+sanžer = maxSanžer;
+
+15.) U varijablu "students" spremajte količinu učenika u učioni. Učiona je na početku prazna i ne zna se koliko učenika može biti. Prvo ih dođe 20, nakon toga ode ih 5, zatim dođe 4, te potom ih ode 12 i na zadnjem satu se broj učenika udvostruči.
+Napišite programski i obavezno korak po korak.
+
+int students;
+
+students += 20; //20
+students -= 5; //15
+students += 4; //19
+students -= 12; //7
+students *= 2; //14
+
+16.) Na početku prvi igrač ima 12 ponija, drugi igrač ima 10 ponija. Koliko ponija ima koji igrač ako prvi otme drugome 4 ponija. Napišite programski.
+
+17.) Zbrojite x koji je 17.2 i y koji je 12.32. Rezultat napišite u varijabli "Maska"
+
+18.) Povećajte vrijednost x za vrijednost x, ako je x 5.
+
+19.) Neka je x vrijednost 6, a y je 7. Njihov rezultat zbrajanja uvećajte (množenje) za vrijednost y i spremite u z
+
+20.) Igrač ima 100 HP-a, pao je sa visine 8 metara i izgubio 20% HP-a. Zatim mu se HP regenerirao za 8 (brojčano) i potom je pokušao ponovo skočiti, ali je sada pao sa visine 7 metara i izgubio 15.7% HP-a. Napišite ovo programski. (Postotci se odnose na trenutni HP, a ne na maksimalni)
+
+21.) Na početku je z 12 i prvo ga povećamo za 3, a zatim ga umanjimo za 2%. Napišite ovo programski.
+
+
+
+
+
+
+
+
+
+
+
+
