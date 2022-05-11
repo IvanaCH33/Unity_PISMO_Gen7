@@ -288,10 +288,161 @@ Igrač ima 240 kristala, a čarobnjak ima minimalno 80 kristala.
 
 25.) Baka je dedi dala 12 kuna (za pivu), a deda je već imao 12 kuna, došla je vrana i uzela baki 8 jabuka, a baka je imala ukupno 10 jabuka. Koliko ce deda popiti piva ako je jedna piva 6 kn, a koliko baka ima jabuka? Riješite programski i odgovorite riječima.
 
+int baka = 12;
+int deda = 12;
+int jabuke = 10;
+int cijenaPive = 6;
+int popijenePive;
+
+deda += baka;
+popijenePive = deda / cijenaPive; //Deda će popiti 4 pive
+jabuke -= 8; //Baka će imati 2 jabuke
+
 26.) Max inventory je 100, trenutno je pun 67, igrač izbaci 13 nepotrebnih itema. Potom ubije trolai uzme 45 itema. Nakon što je pregledao loot, baci 33 itema. Koliko je pun inventory na kraju, ako svaki item zauzima jedno mjesto? Napišite programski.
+
+int iMax = 100;
+int i = 67;
+
+i -= 13; //54
+i += 45; //99
+i -= 33; //66
+
+Inventory je pun 66
 
 27.) Max HP je 100, body shot je 20 damage. Vaš lik ima 80 HP na početku borbe i odmah te neprijatelj pogodi "body shot". Potom padneš i izgubiš 2% trenutnog HP-a i usput te neki NPC nabije i napravi ti damage u iznosu od 8% max HP-a. Regenerira ti se HP na max, ali te opet neprijatelj pogodi "body shot" i head shot (head shot je duplo veći od body shota). 
 Jesi li živ na kraju? Napiši programski.
+
+float maxHP = 100f;
+int bodyshot = 20;
+float hp = 80f;
+float headShot;
+
+headShot = bodyShot * 2;
+hp -= bodyShot;
+hp -= 0.02f * hp;
+hp -= 0.08f * maxHP;
+hp = maxHP;
+hp -= bodyShot;
+hp -= headShot; //40 hp ostalo, živi smo
+
+28.) Igrač pero ima 4 zlatne lopte, a igrač marko ima 6 zlatnih lopti, igrač pero je marku oteo jednu zlatnu loptu, te mu se poslje marko nasao sa sestrom doma i usput vratio svoju loptu i ukrao dvije perine.
+Koliko lopti ima na kraju Marko, koliko Pero i čija sestra je izgubila nevinost?
+Napiši programski.
+
+int pero = 4;
+int marko = 6;
+
+marko -= 1; || marko--;
+pero += 1; || pero++;
+
+pero -= 3;
+marko += 3;
+
+*NAPOMENA* - možete pisati i: marko--; i pero++; kada se povećava ili samnjuje za 1, onda možete napisati ++ ili -- umjesto +1 / -1
+
+
+29.) Igrač ima 20 mana. Iskoristio je vatrenu magiju koja vrijedi 5.5 mana, a nakon toga uzastopno dvije ledene magije koje vrijede 3 mane. Koliko mu je mana ostalo?
+Napiši programski.
+
+float mana = 20f;
+float vatra = 5.5f;
+float led = 3f;
+
+mana -= vatra;
+mana -= 2 * led;
+
+//Ostlao mu je 8.5 mana
+
+
+30.) Na prvenstvu se natječu Danska, Hrvatska, Španjolska i Švedska. Svaka pobjeda nosi 2 boda. Danaska je pobjedila Hr, Špan i Šved. Te nakon utakmice sa Šved. zbog pijanstva dobila 2 kaznena boda. Koliko bodova ima danska.
+
+int danska;
+int bodovi = 2;
+
+danska = 3 * bodovi;
+Danska -= bodovi;
+
+//Danska ima 4 boda i nije prošla grupu
+
+31.) Saša je imao 10 lopti. Dvije je dao psu. Pas je jednu pojeo, koliko je lotpi ostalo psu?
+
+int sasaLopte = 10;
+int pasLopte;
+
+sasaLopte -= 2;
+pasLopte += 2;
+pasLopte--;
+
+32.) Mini ima tank od 60L. Do Novske potroši 20L, cestarina je u jednom smjeru 40 kn. Koliko će novaca izkamatariti tjedno ako putujemo u oba smjera autoputom i cijena goriva je 9 kn/L.
+
+int miniTank = 60;
+int cijenaCestarina = 40;
+int cijenaGoriva = 9;
+int ukupnoGorivo;
+int ukupnoNovaca;
+int ukupnoCestarine;
+
+ukupnoCestarine = (2 * cijenaCestarine) * 7; //560
+ukupnoGoriva = (2 * 20 * 7); //
+ukupnoNovaca = ukupnoCestarine + (ukupnoGoriva * 9);
+
+Ukupno će potrošiti 3080 kn tjedno
+---------------------------------------------------
+int t = 7; //tjedan dana
+int c = 40; //cestarina u jednom smjeru
+int p = 20; //potrošnja u jednom smjeru
+int cg = 9; //cijena goriva
+int n; //konačna cijena
+
+n = t * ((2 * p * cg) + 2 * c);
+
+33.) Krešo ima 10 jabuka. Ivan mu kriomice pojede 2 jabuke. Koliko je jabuka pojeo Denis, a koliko je ostalo Kreši?
+
+int kreso = 10;
+int ivan;
+int denis;
+
+kreso -= 2;
+ivan += 2;
+
+//Kreši je ostalo 8 jabuka, a ne znamo koliko je pojeo Denis.
+
+
+34.) Igrač ima 50 HP i 30 mana. Zatim na protivnika baci spell koji troši 3.5 mane. A istovremeno ga pogađa protivnikov spell koji radi 20 dmg. Istovremeno nosis shield koji blokira 50% dmg od tog spella. Koliko HP i mane imaš?
+
+int HP = 50;
+flaot mana = 30f;
+float spellMana = 3.5f;
+int spellDmg = 20;
+float shield = 0.5f;
+
+mana -= spellMana;
+HP -= spellDmg * shield;
+
+//HP imamo 40, mana imamo 26.5
+
+Vaši zadatci:
+1.) Igrač ima 16 healtha. U borbi protiv 10 neprijatelja odluči koristiti svoj štit koji uspješno blokira 70 % štete. Igrač u prvom naletu se uspije riješiti 3 neprijatelja, ali jedan od preostalih  ga pogodi toljagom. Zbog štita igrač primi samo jedan point štete, a štit postane 10 % manje efiksan. Potom igrač sredi i ostale neprijatelje i dobije level, pa mu se zbog toga health uveća za onoliko % koliko štit blokira štete. Napiši programski, ako health može biti samo cijeli broj.
+
+
+2.) Na početku igre igrač ima 100 HP-a i 100 mane. Ima mač koji po udarcu radi 30 dmg-a, a troši 15 mane. Dolazi do trola koji udarcem radi 40 dmg-a i ima 120 Hp-a. Trol udara igrača 2 puta. Zatim igrač udara trola 3 puta. Koliko Hp-a i mane ima igrač, a koliko Hp-a trol?
+
+
+3.) Igrač ima 100 max Hp. Papa mu je dao buff od kojeg dobije 30% max Hp-a. Napadne ga vukodlak i napravi mu 30% trenutačnog damagea, Koliko je Hp-a ostalo playeru?
+
+
+4.) Player ima 100 HP-a, a dva neprijatelja
+ protiv kojih se bori imaju svaki po 50
+ Hp-a. Player baci spell na prvog neprijatelja dva puta, na drugog pet puta. Damage playerovog spella je 10. Neprijatelj 1 pogodi playera dva puta, nanese mu HP damage od 20 po pogotku. Neprijatelj 2 pogodi playera jedan put , nanese mu damage od 20. Koliko HP-a imaju player i neprijatelji nakon borbe?
+
+
+
+
+
+
+
+
+
 
 
 
