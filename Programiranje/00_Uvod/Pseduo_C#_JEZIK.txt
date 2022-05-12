@@ -424,16 +424,295 @@ HP -= spellDmg * shield;
 Vaši zadatci:
 1.) Igrač ima 16 healtha. U borbi protiv 10 neprijatelja odluči koristiti svoj štit koji uspješno blokira 70 % štete. Igrač u prvom naletu se uspije riješiti 3 neprijatelja, ali jedan od preostalih  ga pogodi toljagom. Zbog štita igrač primi samo jedan point štete, a štit postane 10 % manje efiksan. Potom igrač sredi i ostale neprijatelje i dobije level, pa mu se zbog toga health uveća za onoliko % koliko štit blokira štete. Napiši programski, ako health može biti samo cijeli broj.
 
+int hp = 16;
+int enemy = 10;
+float shield = 0.7f;
+int damage = 1;
+
+enemy -= 3;
+hp -= damage;
+shield -= 0.1f;
+hp *= (int)(hp * shield);
 
 2.) Na početku igre igrač ima 100 HP-a i 100 mane. Ima mač koji po udarcu radi 30 dmg-a, a troši 15 mane. Dolazi do trola koji udarcem radi 40 dmg-a i ima 120 Hp-a. Trol udara igrača 2 puta. Zatim igrač udara trola 3 puta. Koliko Hp-a i mane ima igrač, a koliko Hp-a trol?
 
+int hp = 100;
+int mana = 100;
+int swordDmg = 30;
+int swordMana = 15;
+int trollDmg = 40;
+int trollHp = 120;
 
-3.) Igrač ima 100 max Hp. Papa mu je dao buff od kojeg dobije 30% max Hp-a. Napadne ga vukodlak i napravi mu 30% trenutačnog damagea, Koliko je Hp-a ostalo playeru?
+hp -= 2 * trollDmg; //20
+trollHp -= 3 * swordDmg; //30
+mana -= 3 * swordMana; //55
+
+//Igrrač ima 20 HP-a i 55 mana, a troll ima 30 HP-a
+
+
+3.) Igrač ima 100 max Hp. Papa mu je dao buff od kojeg dobije 30% max Hp-a. Napadne ga vukodlak i napravi mu 30%  damagea od trenutačnog HP-a, Koliko je Hp-a ostalo playeru?
+
+float hp = 100f;
+
+hp *= 1.3f; //130
+hp *= 0.7f; //91
 
 
 4.) Player ima 100 HP-a, a dva neprijatelja
  protiv kojih se bori imaju svaki po 50
  Hp-a. Player baci spell na prvog neprijatelja dva puta, na drugog pet puta. Damage playerovog spella je 10. Neprijatelj 1 pogodi playera dva puta, nanese mu HP damage od 20 po pogotku. Neprijatelj 2 pogodi playera jedan put , nanese mu damage od 20. Koliko HP-a imaju player i neprijatelji nakon borbe?
+
+int playerHp = 100;
+int enemyOne = 50;
+int enemyTwo = 50;
+int spellDmg = 10;
+int enemyDmg = 20;
+
+enemyOne -= 2 * speelDmg; //30
+enemyTwo -= 5 * spellDmg; //0
+playerHp -= 2 * enemyDmg; //60
+
+5.) Imaš 100 HP-a, neprijatelj te napada i nanosi ti 20 dmg svakim udarcem, nakon 2 udarca si pokupio štit koji te brani 50%. Zapiši programski koliko je udarca potrebno neprijatelju da te ubije.
+
+int hp = 100;
+int dmg = 20;
+float shield;
+
+hp -= 2 * dmg; //60
+shield = 0.5;
+hp -= (int)(shield * dmg); //50
+hp -= (int)(shield * dmg); //40
+hp -= (int)(shield * dmg); //30
+hp -= (int)(shield * dmg); //20
+hp -= (int)(shield * dmg); //10
+hp -= (int)(shield * dmg); //0
+
+-----------------------------------------
+
+
+hp -= (int)((1 -shiled) * dmg) * 2;
+shield = 0.5;
+hp -= (int)((1 -shiled) * dmg);
+hp -= (int)((1 -shiled) * dmg);
+hp -= (int)((1 -shiled) * dmg);
+hp -= (int)((1 -shiled) * dmg);
+hp -= (int)((1 -shiled) * dmg);
+
+
+** PISANJE KOMENTARA **
+- obavezno
+- koristi se za druge ljude kada čitaju vaš kod
+- programeri koji ne koriste komentare kažu "Prvo smo Bog i ja znali kako radi ovaj kod, sada zna samo Bog"
+- komentari se pišu sa "//" i pišete ih iznad ili u redu narebde/linije/metode na koju se odnose
+
+npr.
+int health = 100; //varijabla za health od playera
+int dmg = 25; //varijabla za damage od zombija
+int dmg2 = 30; //vaijabla za damage od vampira
+
+npr. Komentiranje više redova - koristi se kada kod radi, ali se našao/traži bolji način pa ga se zakomentira da se ne odvija u programu
+
+/*
+float bana = 89f;
+
+bana = bana * 2 - 45 + 3.9f;
+*/
+
+35. Iskomentirajte i riješite zadatak:
+- Max HP je 100, body shoot je 20 damage. Vaš lik ima 89 HP na početku borbe i odmah te neprijatelj pogodi "body shoot". Potom padneš i izgubiš 2% HP-a i usput te neki NPC nabije i napraviti damage u iznosu od 8% maxHP-a. Regenerira ti se HP na max, ali te opet neprijatelj pogodi "body shoot" i head shoot koji je duplo veći od body shoota. Potom je NPC se zbugao i nanio ti istu štetu kao i prije.
+
+int maxHP = 100; //maksimalni iznos healtha od igrača
+int bodyShoot = 20; //iznos damamagea koji body shoot radi nama
+float hp = 89f; //trenutni health koji igrač ima
+
+hp -= bodyShoot; //igrač je primio body shoot i pao na 69 hp-a
+hp *= 0.98f; //igrač padne i gubi 2% hp-a
+hp -= 0.08 * maxHP; //NPC nanosi štetu igraču u iznosu od 8% od max hp-a
+hp = maxHP; //igrač se regenerira na max hp
+hp -= bodyShoot; //igrač je primio body shoot i pao na 80 hp-a
+hp -= bodyShoot * 2; //igrač je primio head shoot i pao na 40 hp-a
+hp -= 0.08 * maxHP; //NPC nanosi štetu igraču u iznosu od 8% od max hp-a i pao je na 32 HP-a
+
+
+36.) Iskomentirajte i riješite zadatak: Pri rezultatu 100/90 domacini su dali jos 3 kosa do kraja utakmice. A gosti su dali 5 koseva. Koliki je bio rezultat na kraju utakmice ako znam da jedan koš vrijedi 2 boda.
+
+int d = 100; // Početni rezultat domacina
+int g = 90; // Pocetni rezultat gosti
+int k = 2; // Broj bodova koji svaki kos donosi
+
+int rd; // Konacni rezultat domacina
+int rg; // Konacni rezultat gosti
+
+rd = d + 3 * k; // Broj koseva koje su postigli domacini
+rg = g + 5 * k; // Broj koseva koje su postigli gosti
+
+37.) Iskomentirajte i riješite zadatak: Cwekii ima 20 debila na unity edukacije od kojih mora napraviti game developera, 5 debila odustaje od edukacije, 3 debila se prebacuju sa blendera, ali od pridošlica samo dvojica završavaju. Koliko je game developera Cwekii napravio?
+
+int debili = 20; //početni broj polaznika unity edukacije
+
+debili -= 5; //otišlo je pet debila sa edukacije
+debili += 3; //došlo je troje debila sa Blender edukacije
+debili --; //broj polaznika se smanjio jer jedna od pridošlica nije završila edukaciju
+//17 debila je završilo edukaciju i postalo game developerima
+
+38.) Iskomentirajte i riješite zadatak: Igrac ima 100 max hp i 50 movement pointsa, također ima 1 potion koji ga heala 10% max HP. Ima dvije vrste napada specijalni koji radi 50 dmg i troši 30 movement pointa i obicni napad koji radi 30 dmg i ne kosta nista. Monster ima 126 HP-a i tuce za 30 dmg. Tuku se naizmjenicno svako jedan napad po krugu, a potion ne troši krug i igrač napada prvi. Combat je gotov kada igrač ili monster umru. Tko umre prvi ako igrač koristi sve što mu je na raspolaganju?
+
+**UVIJETI**
+Što je uvijet?
+- Uvijet je skup riječi koje govore što se treba ispuniti kako bi se izvšio niz/red naredbi
+- Primjeri uvijeta:
+	- AKO - if
+	- DOK - while
+	- Kada - when (ne postoji)
+	- ZA - for
+- Kako se zadovoljava uvijet? Sa provjerom znakova vrijednosti:
+== jednako je - provjera jesu li vrijednosti jednake
+= dodjeljuje vrijednost
+!= različito je
+|| (alt gr + W) ili - ili je jedna vrijednost točna ili je druga
+&& i - obje vrijednosti moraju biti točne/istinite
+> veće od
+< manje od
+<= manje ili jednako od
+>= veće ili jednako od
+
+primjeri if petlji:
+if(1 +1 == 2) --> istina
+if(2 + 3 != 4) --> istina
+if(18 > 19) --> laž
+if(21 <= 21) --> istina
+
+kao da piše:
+istina -> 1 + 1 = 2
+laž -> 5 + 5 = 11
+if(istina || laž) --> istina
+if(istina || istina) --> istina
+if(laž || istina) --> istina
+if(laž || laž) --> laž
+if(istina && istina) --> istina
+if(istina && laž) --> laž
+if(laž && istina) --> laž
+if((laž && laž) || istina) --> istina
+
+39.) x je veličine 8, a y je veličine 13, ako je njihov zbroj manji od 50 neka se x poveća za samoga sebe, a ako je zbroj veći ili jednak 50 neka se y poveća za samog sebe, a u svim ostalim slučajevima x se treba pomožiti za y i spremiti u x.
+
+
+int x = 8;
+int y = 13;
+
+if(x + y < 50)
+{
+	x += x;	
+}
+
+else if(x + y >= 50)
+{
+	y += y;
+}
+
+else
+{
+	x *= y;
+}
+
+40.) Vrijednost x je -3.6, a vrijednost y je 10. Ako je njihov umnožak veći od 100 neka se x uveća za taj umnožak, ako je manji od 100 neka se y uveća za taj umnožak, a ako je umnožak jednak 100 neka se x i y uvećaju za sami sebe.
+
+float x = -3.6f;
+float y = 10f;
+
+if(x * y > 100)
+{
+	x += x * y;
+}
+
+else if(x * y < 100)
+{
+	y += x * y;
+}
+
+else if(x + y == 100)
+{
+	x += x;
+	y += y;
+}
+
+41.) Igračev health je 30. Regeneracija ce mu krenuti ako mu je health pao ispod 20 i povećati će se za 12. 
+
+int hp = 30;
+int regeneracija = 12;
+
+if(hp < 20)
+{
+	hp += regeneracija;
+}
+
+42.) Igračev health je 31. Regeneracija ce mu krenuti ako mu je health pao ispod 20 i povećati će se za 12. Igrac prvo prima dmg od 9. Zatim je popio potion koji mu je vratio 10 hp i potom je primio critical strike koji mu je skinuo 26 hp. Pitanje je jel se igracu dogodio health regen i ako je kada? Napisati programski i oznacite komentarima kada se dogodila regeneracija.
+
+int hp = 31;
+int dmg = 9;
+int strike = 26;
+
+if(hp < 20)
+{
+	hp += 12;
+}
+
+hp -= dmg; // 22
+//provjera ide li regeneracija
+hp += 10;  // 32
+//provjera ide li regeneracija
+hp -= strike; // 6  
+// provjera ide li regeneracija
+// Ovdje će se desiti regeneracija
+
+
+43.) Igrac jedan i dva su imali 100 hp. Igrac dva je udario igraca jedan te mu oduzeo 25 hp, igrac jedan kontra napadom oštečuje igrača dva za 14 hp, te regenerira sebe za 10 hp. Koliko koji igrac ima hp?
+
+
+44.) Pokemon evoluira kada dođe na 16 level. Za doći na 16 level potrebno mu je ukupno 4561 XP. Početni level mu je 1 i ima 0 xp. Odradio je 25 borbi gdje je dobio 25 xp po borbi i potom još 25 borbi gdje je u svakoj dobio 93 xp. Napravite provjeru imali dovoljno xp za evoluciju, ako nema gubi sav xp, a ako ima onda mu je level 16.
+
+
+45.) Kapetan Miki ima 10 HP, ako primi damage veći od 5, a da ga to neće ubiti onda se Miki naljuti i njegov HP bude 20.
+
+int mikiHp = 10;
+int dmg; 
+
+if(dmg > 5 && mikiHp > dmg)
+{
+	mikiHp = 20;
+}
+
+
+46.) A je jacine 5, a B je jacine 17 ako je njihova razlika veca od 10 neka se broj A poveca za B, a ako je manja ili jednaka neka se B poveca za A
+
+
+47.) Imate varijablu X. Ako je X veći od 10, neka se X uveća za 20, a ako je X manji od 10 neka se umanji za 9. U ostalim slučajevima neka se X pomnoži sam sa sobom.
+
+
+
+48.) U šumi je 6 elfova, 5 gnomova i 10 orkova, ako je zbroj elfova i gnomova veći ili jednak orkovima, broj elfova se uveća za njihov broj (poduplaju se), a ako je njihov zbroj manji, orkovi pojedu 50% gnomova i 20% elfova. NAPOMENA, ne može se pojesti decimalno elfova niti gnomova.
+
+
+
+49.) Pocetna vrijednost varijable je 830, X je 69, a Y je 538. ukoliko je umnožak x i y manji od 1000 i varijabla vrijednosti 830 zbrojena sa y je veca od 1000 , neka se varijabla sa pocetnom vrijednoscu 830 smanji za 100. Ukoliko je umnozak veci (samo to je uvijet), neka se pocetna varijabla poveca za 100. U svim ostalim slucajevima neka se pocetna varijabla pomnozi za 100.
+
+
+50.) Super Mario je imao 3 života na početku. Izgubio je 2. Dobio je jedan život tokom nivoa i dobio jedan nakon što je prešao nivo. Napiši programski.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
