@@ -800,14 +800,118 @@ marioLife++;
 
 51.) X je 15, Y je 100, ako je X izmedu 13 i 19 (ukljceni su i 13 i 19) povecaj Y za 20%. A ako nije onda Y smanji za 13%. Ne smiju se spremati vrijednosti u decimalnom zapisu.
 
+int X = 15;
+int Y = 100;
+
+if(x >= 13 && x <= 19) //NE: 19 >= x >= 13
+{
+	y += (int)(y * 0.2f);
+}
+
+else
+{
+	y -= (int)(y * 0.13f);
+}
 
 52.) Cilj igre je skupiti 4 objekta, prsten, pehar, zlatnik i dijamant. Sa svakim skupljenim itemom aktivira se jedan boss, a kada se skupi svih 4 itema, igra je pređena. Odmah skupljate prsten, te dalje tim redosljedom. Sa koliko bossova ste se borili dok niste prešli igru?
+
+int items;
+int itemsToCollect = 4;
+int prsten;
+int pehar;
+int zlatnik;
+int dijamant;
+int boss;
+
+prsten++;
+if(prsten == 1)
+{
+	boss++; //1
+	items++;
+}
+pehar++;
+if(pehar == 1)
+{
+	boss++; //2
+	items++;
+}
+zlatnik++;
+if(zlatnik == 1)
+{
+	boss++; //3
+	items++;
+}
+dijamant++;
+if(dijamant == 1)
+{
+	boss++; //4
+	items++;
+}
+
+if(items == itemsToCollect)
+{
+	//Kraj igre
+}
+
+//Ukupno smo se borili sa 4 bossa
+
 
 
 53.) Vrijednost "nice" je 69, a vrijednost "blaze" je 420, ako je zbroj tih vrijednosti pomnožen sa 2 veći od 1300 neka se nice podupla, a ako je manji ili jednak 1250 neka se blaze podupla.
 
+int nice = 69;
+int blaze = 420;
+
+if((nice + blaze) * 2 > 1300)
+{
+	nice *= 2;
+}
+
+else if((nice + blaze) * 2 <= 1250)
+{
+	blaze *= 2;
+}
+
 
 54.) Programski zapisi 11.79 + 9.01 = 19.80;
+
+float x = 11.79f;
+flaot y = 9.01f;
+flaot rez = 19.8f;
+
+if(x + y > rez)
+{
+	float razlika = rez - x - y;
+	x -= razlika;
+}
+
+else if(x + y < rez)
+{
+	float razlika = rez - x - y;
+	x += razlika;
+}
+
+** VAR varijabla
+
+var:
+- vrsta varijable koja se prilagođava unosu
+- ne može se definirati u početku
+- koristi se samo unutar neke petlje/metode za privremenu vrijednost
+
+npr.
+Neka se rezultat množenja x i y poveća za 10 ako je x veći od 5 i spremite u varijablu rez, ali to odradite u 2 koraka
+
+float x = 10.5f;
+int y = 77;
+float rez;
+
+rez = x * y;
+
+if(x > 5)
+{
+	var privremeno = x * y;
+	rez = privremeno + 10;
+}
 
 
 55.) Igrac HP-a 100 je primio dmg 23. Popijemo potion koji nam vrati 15 hp. Napisi programski.
@@ -825,6 +929,112 @@ marioLife++;
 
 60.) Varijabla x je 15, varijabla y je dva puta veca od x. Ako je zbroj x i y manji od 50, x se poveca za y. Ako je zbroj x i y veci od 50 od x se oduzima y, a ako je zbroj jednak onda x dobiva y vrijednost.
 
+*METODE*
+- metoda je skup narebi koje se trebaju odraditi u određenim uvjetima i intervalu
+
+Ključne metode u Unityu:
+
+- Awake 
+	- odvija se prije 0 framea
+	- događa se prija stvaranje bilokakvih objekata na sceni
+	- izvršava se samo jedan put
+
+- Start
+	- izvršava se netom prije prvog framea
+	- izvršava se samo jedan put
+
+- Update
+	- svaki frame se jednom izvrši
+
+kako se piše metoda:
+
+void nazivMetode()
+{
+	linija naredbe;
+}
+
+* vidljivost metoda/varijabli
+- public - ispred vrste varijable kojoj omogucavamo da mi kao developeri možemo unositi i mjenjati vrijednost varijable u Unity Inspectoru ili pozivati iz drugih skripti
+npr. public float primjer = 4.7f;
+
+- private - stavlje se ispred varijable i onemogucava vidjljivost i promjene vrijednosti varijable iz Unity Inspectora i pozivanje iz drugi skripti. Ako ispred varijable/metode ne piše ništa, automatski je private.
+npr. private int primeric = 5; ili int primeric = 5;
+
+*Debugiranje*
+- postupak pružanja informacija developeru ima li greške i koja je greška ili ispis rada programa u konzoli
+
+- Osnovo - Debug.Log("")
+- Debug -> debugiraj (provjeri)
+- Log -> ispiši u konzoli
+- ("") - unutar navodnika tekst za ispis, poslje može varijabla za ispis (spajanje se radi sa pomoću znaka +)
+
+npr. 1.
+public int x;
+public int y;
+
+void Start()
+{
+	var rez = x * y;
+	Debug.Log("Rezultat je" + rez);
+}
+
+npr. 2.
+
+void Start()
+{
+	Debug.Log("Odvila se start metoda");
+}
+
+Napomena za zadatke 61.- ako ne pise da je javna varijabla onda je privatna
+
+61.) U startu neka se zbroje 2 javna broja. I neka se ispiše u konzoli njihov zbroj.
+
+public int x;
+public int y;
+
+void Start()
+{
+	var zbroj = x + y;
+	Debug.Log(zbroj);
+}
+
+-------------------------------------
+public int x;
+public int y;
+
+void Start()
+{
+	Debug.Log(x + y);
+}
+
+62.) Zbrojite u startu x koji je 17.2 i y koji je javan broj. Neka se rezultat sprema u varijablu "banana" i neka se ispiše u konzoli.
+
+float x = 17.2f;
+public float y;
+float banana;
+
+void Start()
+{
+	banana = x + y;
+	Debug.Log(banana);
+}
+
+
+63.) Povecajte x koji je 5 za 5 svaki frame.
+
+int x = 5;
+
+void Update()
+{
+	x += 5;
+}
+
+
+64.) Neka je x 6, a y je 7 i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat uveca za x
+
+
+
+65.) Neka je x 8, a y je javni broj i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat poveca za polovicu x varijable.
 
 
 
