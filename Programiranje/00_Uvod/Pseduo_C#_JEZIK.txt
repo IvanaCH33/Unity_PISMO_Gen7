@@ -916,19 +916,152 @@ if(x > 5)
 
 55.) Igrac HP-a 100 je primio dmg 23. Popijemo potion koji nam vrati 15 hp. Napisi programski.
 
+int Php = 100;
+int potion =15;
+int dmg = 23;
+
+Php-=dmg;
+Php+=potion; 
 
 56.) Vi imate 15€, a vaš frend 25€ i vaš treći frend ima 10.5€. Vi takvi siromasi se odlučite kupiti Bugatti Vayrona koji košta 2500000€. Ako osoba koja ima najviše novaca ima duplo više novaca od osobe koja ima najmanje novaca, onda on plaća pola cijene. A ostala dvojica djele drugu polovicu po pola. Ako to nije slučaj onda svi plačaju jednak iznos. Napisite koliko svakome pojedinacno jos fali novaca.
+
+float ja = 15f;
+float frend1 = 25f;
+float frend2 = 10.5f;
+float cijena = 2500000f;
+float jaTrebamPara;
+float frend1TrebaPara;
+float frend2TrebaPara;
+
+if(ja == 2*frend1 || ja == 2*frend2)
+{
+	jaTrebamPara = 0.5 * cijena;
+	frend1TrebaPara = 0.25 * cijena;
+	frend2TrebaPara = frend1TrebaPara;
+}        
+	
+
+else if(frend1 == 2*ja || frend1 == 2*frend2)
+{
+	frend1TrebaPara = 0.5 * cijena;
+	jaTrebamPara = 0.25 * cijena;
+	frend2TrebaPara = jaTrebamPara;
+}        
+
+
+else if(frend2 == 2*ja || frend2 == 2*frend1)
+{
+	frend2TrebaPara = 0.5 * cijena;
+	frend1TrebaPara = 0.25 * cijena;
+	jaTrebamPara = frend1TrebaPara;
+}   
+
+else
+{
+	jaTrebamPara = cijena / 3;
+	frend1TrebaPara = cijena / 3;
+	frend2TrebaPara = cijena / 3;
+}  
+
+ja -= jaTrebamPara;
+frend1 -= frend1TrebaPara;
+frend2 -= frend2TrebaPara;
+
 
 
 57.) x je 50, y je 100, ako je njihov zboj veci od trostruke vrijednosti x onda neka se x podupla, a ako je manji neka se y udvostruci, a ako su jednaki neka se oba kvadriraju.
 
+int x = 50;
+int y = 100;
+int z = x+y;
+int u = 3*x;
+
+if(z > u)	
+{
+	x=x*2;
+}
+
+else if(z < u)	
+{
+	y=y*2;
+}
+
+else if(z == u)	
+{
+	x*=x;
+	y*=y;
+}
 
 58.) igrac ima 100 HP. Ako mu HP padne ispod 75 regenrira mu se health za 10, a ako padne ispod 25 i igrac ostane ziv, regenerira mu se za 25 HP. Igrac prvo primi dmg od 55, a zatim opet primi dmg od 55. Koliko hp ima igrac?
 
+int playerHP = 100;
+int dmg = 55;
+int regen1 = 10;
+int regen2 = 25;
+
+playerHP -= dmg; // 45 HP 
+if(playerHP < 75 && playerHP >= 25)
+{
+	playerHP += regen1;
+}
+else if (playerHP < 25 && playerHP > 0)
+{
+	playerHP += regen2;
+}
+
+playerHP -= dmg; // player ima 0 HPa
+
+if(playerHP < 75 && playerHP >= 25)
+{
+	playerHP += regen1;
+}
+else if (playerHP < 25 && playerHP > 0)
+{
+	playerHP += regen2;
+}
+
+
 59.) Prvi vozac ima 10 kockica, a drugi ima 13. Kada se oni sudare onaj koji ima manje ukrade drugome jednu kockicu
+
+int driverOne = 10;
+int driverTwo = 13;
+
+if(driverOne < driverTwo)
+{
+	driverOne ++;
+	driverTwo --;
+}
+else if(driverOne > driverTwo)
+{
+	driverOne --;
+	driverTwo ++;
+}
+else
+{
+//Ništa, imaju jednako, kaj da radim...
+}
+
 
 60.) Varijabla x je 15, varijabla y je dva puta veca od x. Ako je zbroj x i y manji od 50, x se poveca za y. Ako je zbroj x i y veci od 50 od x se oduzima y, a ako je zbroj jednak onda x dobiva y vrijednost.
 
+int x = 15;
+int y = 2*x;
+int zbroj = x+y;
+
+if(zbroj < 50)
+
+{
+	x += y;
+}
+else if(zbroj > 50)
+{
+
+	x -= y;
+}
+else if(zbroj == 50)
+{
+	x = y;
+}
 *METODE*
 - metoda je skup narebi koje se trebaju odraditi u određenim uvjetima i intervalu
 
@@ -1032,12 +1165,358 @@ void Update()
 
 64.) Neka je x 6, a y je 7 i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat uveca za x
 
+int x = 6;
+int y = 7;
+int rez;
+
+void Start()
+{
+rez= x+y;
+}
+
+void Update()
+{
+rez+=x;
+}
 
 
 65.) Neka je x 8, a y je javni broj i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat poveca za polovicu x varijable.
 
+int x = 8
+public int y;
+int z;
+ void Start()
+{
+	z = x + y;
+}
+
+void Update()
+{
+	z += x/2;
+
+}
+
+66.) Ako je vrijednost x -3.6, a vrijednost y je javna. Ako je zbroj veci od 20 neka se ispiše "To legendo", a ako je manji ili jednak neka se ispiše "Falia si budalo"
+
+float x = -3.6f;
+public flaot y;
 
 
+void Start()
+{
+	if(x + y > 20)
+	{
+		Debug.Log("To legendo");
+	}
+	else if(x + y <= 20)
+	{
+		Debug.Log("Falia si budalo");
+	}
+}
+
+67.) U startu zbrojite dvije javne varijable od kojih se jedna zove "y". Neka se svaki frame x povecava za 5% iznosa y varijable. Svaki frame ponovo zbrojite x i y te ispišite vrijednost zbroja.
+
+public float x;
+public float y;
+private float sum;
+
+void Start()
+{
+	sum = x + y;
+}
+
+void Update()
+{
+	x += y * 0.05f;
+	sum = x + y;
+	Debug.Log(sum);
+}
+
+
+68.) Neka se u metodi start ispiše "Ja sam Start", u metodi awake "Ja sam mali Awake", te u konacnici neka se svaki frame ispisuje "Moje ime je medvjedić Lino".
+
+void Awake()
+{
+	Debug.Log("Ja sam mali Awake");
+}
+
+void Start()
+{
+	Debug.Log("Ja sam Start");
+}
+
+void Update()
+{
+	Debug.Log("Moje ime je medvjedić Lino");
+}
+
+69.) Noice ;)
+
+70.) Povecajte javnu varijablu X za jedan svaki frame. Neka se također svaki frame ispiše "Ja imam " + x + " godina".
+
+public int x;
+
+void Update()
+{
+	x++; 
+	Debug.Log("Ja imam " + x + " godina");
+}
+
+
+*Ponavljanje:
+
+1.) napišite primjer int varijable
+int broj = 5;
+int x = 4;
+public int y = -3;
+
+2.) napišite primjer float varijable
+
+float x = 5.3f;
+float y = -3.5f;
+public float z = 3.851421f;
+
+3.) Objasnite razliku između || (OR/ILI) i && (AND/I) sa primejrom if-else u start metodi
+
+int x = 5;
+int y = 7;
+public int z;
+
+void Start()
+{
+	if(x + y = z || x - y = x)
+	{
+		x += 8;
+	}
+	
+	else if(x * y = z && x * z = y)
+	{
+		x -= 8;
+	}
+}
+
+4.) Što znači !=
+
+Označava da su vrijednosti različite
+
+5.) x je 10, a y je 12. U Startu napravite provjeru ako su x i y jednaki neka se ispiše "Jednako je", ako su različiti neka se ispiše "Različito je"
+
+int x = 10;
+int y = 12;
+
+void Start()
+{
+	if(x == y)
+	{
+		Debug.Log("Jednako je");
+	}
+	else if(x != y)
+	{
+		Debug.Log("Različito je");
+	}
+}
+
+6.) Ivica ima 5 jabuka, a Marica ima 2 jabuke, Ivica joj uzme 1 jabuku. Marica izjavi da je Ivica Smrad. Napišite programski
+
+int i = 5;
+int m = 2;
+
+void Start()
+{
+	m--;
+	i++;
+	Debug.Log("Ivica je smrad");
+}
+
+7.) X je javni broj. Neka se prije nultog framea ispiše vrijednost x.
+
+public int x;
+
+void Awake()
+{
+	Debug.Log(x);
+}
+
+8.) U startu zbroji javnu vrijednost x i javnu vrijednost y. Ako je njihov zbroj 10, neka se svaki frame ispiše "Može", a ako njihov zbroj nije 10 neka se svaki frame ispiše "Reka san nemože!"
+
+public int x;
+public int y;
+private int zbroj;
+
+void Start()
+{
+	zbroj = x + y;
+}
+
+void Update()
+{
+	if(zbroj == 10)
+	{
+		Debug.Log("Može");
+	}
+	else if(zbroj != 10)	
+	{
+		Debug.Log("Reka san nemože!");
+	}
+}
+
+Nastavak:
+71.) Imajte dva javna cijela broja. Njihov rezultat zbrajanja se sprema u javnu varijablu. Postupak je sljedeći. Svaki frame se prvi cijeli broj mora povecati za 1, potom se racuna rezultat zbrajanja prvog broja i drugog. Ako je rezultat manji od 500 ispisuje se ("Manji"), ako je između 500 i 2000 ispisuje se "Prosječan", a ako je veći ispisuje se "Največi"
+
+public int x;
+public int y;
+public int z;
+
+void Update()
+{
+	x++;
+	z = x + y;
+	
+	if(z < 500)
+	{
+		Debug.Log("Manji");
+	}
+	else if(z >= 500 && z < 2000)
+	{
+		Debug.Log("Prosječan");
+	}
+	else if(z >= 2000)
+	{
+		Debug.Log("Največi");
+	}
+}
+
+
+72.) x ima vrijednost 7, ali je x privatna varijabla. Napišite da se u startu ispiše vrijednost x varijable.
+
+private int x = 7;
+
+void Start()
+{
+	Debug.Log(x);
+}
+
+
+73.) U početku zbroji javnu vrijednost koja prima vrijednosti cijelih brojeva i javnu vrijednost koja prima vrijednost decimalnih brojeva. Ako je njihov zbroj 10 neka se svaki frame ispiše "Banana", a ako je manji od 10 neka se ispiše "Mrkvica". Obavezno koristiti samo jednu metodu.
+
+public int x;
+public float y;
+
+void Update()
+{
+	if(x + y == 10)
+	{
+		Debug.Log("Banana");
+	}
+	else if(x + y < 10)
+	{
+		Debug.Log("Mrkvica");
+	}
+}
+
+74.) Napišite skriptu gdje se zbrajaju dva javna broja u metodi start i ispisuje im se rezultat na primjer: Rezultat zbrajanja brojeva 8 i 9.5 je 17.5
+
+public float x;
+public float y;
+public float z;
+
+void Start()
+{
+	z = x + y;
+	Debug.Log("Rezultat zbrajanja brojeva " + x + " i " + y + " je " + z);
+}
+
+*Bool
+- Što je bool?
+- Bool je vrsta varijable koja pohranjuje u sebe isključivo 2 moguće vrijednosti, a to su točno ili netočno.
+- može biti samo true ili false
+- tehnički se može reći da ide 0 ili 1
+npr.
+bool banana = false;
+bool died = true;
+bool endGame; //Kada ne piše vrijednost onda je null, ako je null to je kao da je 0, a pošto bool ne može biti 0, onda je false
+bool zmajcek; <=> bool zmajcek = false;
+
+75.) Neka se zbrajaju dva javna broja, ako je njihov zbroj veci od 15 neka bool endGame postane true, ako su manji ili jednaki neka je false. Ovo napravite u drugoj, vlastitoj metodi, Ako je endGame true onda neka se ispiše u konzoli da je igra završena, a ako je false neka ispiše da si preživio.
+
+public int x;
+public int y;
+bool endGame = false; //bool endGame;
+
+void Start()
+{
+	if(x + y > 15)
+	{
+		endGame = true;
+	}
+	else
+	{
+		endGame = false;
+	}
+
+	CheckIfEndGame();
+}
+
+
+
+void CheckIfEndGame()
+{
+	if(endGame == true) //if(endGame) -> kada je sam odnosi se na true
+	{
+		Debug.Log("Igra je završila");
+	}
+
+	else if(endGame == false) //if(!endGame) -> kada je usklicnik ispred samog boola odnosi se na false
+	{
+		Debug.Log("Preživio si");
+	}
+}
+
+
+
+76.) Neka su dva javna broja float vrijednosti. Za pocetne vrijednosti neka budu 12.3 i 18.2. Definirajte i privatni bool banana. Banana je na pocetku false. Ako je umnožak dva broja veci ili jednak 100 neka banana postane true i u konzoli neka se ispiše "Banana je pojedena", ako je banana false neka se ispiše "Banana je citava". 
+Riješite na dva načina. 1. koristeći samo metodu Awake. 2. koristeći metodu start i vlastitu metodu.
+
+
+
+77.) Napišite skriptu gdje ćete imati start metodu i metodu naziva vašeg imena. U startu neka se pozove metoda vašeg imena. Metoda vašeg imena neka ima naredbu da ispiše u konzoli "Ja sam unity developer i pametniji sam nego gobelodt developer".
+
+
+78.) Napišite skriptu koja u sebi nosi 4 javna floata. U startu se radi provjera matematickog zapisa:
+x + y * (a / b) - x / a * 18 * b - x + y = rez
+Ako je rezultat veci od drugog zapisa:
+x - y / (a * b) + x * a / 18 / b + x - y + 23 = rez
+Onda neka se u updateu rezultat povecava za jedan i ispisuje "Ja sam rezultat: " + rezultat
+
+
+79.) Napišite skriptu gdje imate jedan bool i jedan javni broj. Ako je taj javni broj razlicit od 18 onda neka se pozove metoda MjenjajMe koja mjenja vrijednost tako da ako je bool bio true pretvara ga u false, a ko je bio false pretvara ga u true.
+
+
+
+80.) Napišite skriptu koja množi dva javna broja. Ako je njihov umnožak različit od 100 ili je veci od 0 onda neka se pozove druga metoda naziva JaSamMetodaDva u kojoj ce se raditi djeljenje prvog broja sa drugim i ako je rezultat djeljenja manji od 100 neka se ispiše "Ja sam MVP" (Inače MVP je kratica za Most Valuable player), ako je bilokoje drugo riješenje neka se u konzoli ispiše "Ja sam N00b".
+
+
+
+81.) Imate javni bool. Ako je taj bool jednak true u startu onda neka se ispiše "Volim mrkvu", a ako je različit od true onda neka se ispiše "Volim borovnicu".
+
+
+
+82.) Sto ce se ispisati?
+
+public int x = 10;
+public int y = 3;
+
+void Start()
+{
+	Debug.Log(x/y);
+}
+
+83.) Uvecaj int x za 1 svaki drugi frame.
+
+
+
+
+84.) x i y su javni brojevi. Ako je njihov zbroj manji od 5 u konzoli ispiši "Mužu, prevarila sam te", a ako je veći ispiši "Dijete je tvoje!"
 
 
 
