@@ -4,6 +4,7 @@ Napisati mi poruku na whatsapp
 Ime i prezime
 
 Za HZZ - TINA NOVAK tnovak@rk-smz.hr
++385 99 218 4377
 
 Matematički zapis:
 
@@ -1754,6 +1755,178 @@ d) Ako je igra na normal onda neka je broj enemya dva puta veci od easy nacina
 e) Ako je igra na harderDaddy onda neka je broj enemya tri puta veci nego u normal nacinu igre
 f) Nakon što se provjeri koji je mod igre (težina, odnosno koji je bool tocan), neka se ispiše u konzoli svaki enemy posebno kao u primjeru: Debug.Log("Stvoren je " + i + ". enemy!") - npr. Stvoren je 3. enemy | Stvoren je 10. enemy
 g) Kada su se ispisali svi enemy-i (prestala je for petlja iz zadataka) neka se ispiše poruka "Sretno ti u " + težina igre + " nacinu igre!" - npr. Sretno ti u easy nacinu igre!
+
+public bool easy;
+public bool normal;
+public bool harderDaddy;
+int enemies = 5;
+
+void Start()
+{
+	if(!easy && !normal && !harderDaddy)
+	{	
+		normal = true;
+	}
+	Spawn();
+}
+
+void Spawn()
+{
+	if(easy)
+	{
+		enemies = 5;
+		
+		for(int i = 1; i <= enemies; i++)
+		{
+			Debug.Log("Stvoren je " + i + ". enemy!");
+		}
+		Debug.Log("Sretno ti u easy načinu igre");
+	}
+	else if(harderDaddy)
+	{
+		enemies *= 6;
+		
+		for(int i = 1; i <= enemies; i++)
+		{
+			Debug.Log("Stvoren je " + i + ". enemy!");
+		}
+		Debug.Log("Sretno ti u harderDaddy načinu igre");
+	}
+	else
+	{
+		enemies *= 2;
+		
+		for(int i = 1; i <= enemies; i++)
+		{
+			Debug.Log("Stvoren je " + i + ". enemy!");
+		}
+		Debug.Log("Sretno ti u normal načinu igre");
+	}
+}
+
+----------drugi način-----------
+public bool easy;
+public bool normal;
+public bool harderDaddy;
+int enemies = 5;
+
+void Start()
+{
+	if(easy)
+	{
+		Spawn();
+		Debug.Log("Sretno ti u easy načinu igre");
+	}
+	else if(normal)
+	{
+		enemies *= 2;
+		Spawn();
+		Debug.Log("Sretno ti u normal načinu igre");
+	}
+	else if(harderDaddy)
+	{
+		enemies *= 6;
+		Spawn();
+		Debug.Log("Sretno ti u harderDaddy načinu igre");
+	}
+	else
+	{
+		
+	}
+}
+
+void Spawn()
+{
+	for(int i = 1; i <= enemies; i++)
+	{
+		Debug.log("Stvoren je " + i + ". enemy!");
+	}
+}
+
+*Ponavljanje*
+86.) Kakav zapis ide u vrstu varijable int?
+
+87.) Kakav zapis ide u vrstu varijable float?
+
+
+88.) Kakav zapis ide u vrstu varijable bool?
+
+
+89.) Ako je int ostavljen prazan, vrijednost mu je?
+
+
+90.) Ako je bool ostavljen prazan, vrijednost mu je?
+
+
+91.) Napišite programski matematicke zapise:
+5 * (22 - 11) / 8 = x
+9 * 7 * x / z = y
+x * 88 - 111 = z
+
+
+
+92.) Koja je razlika izmedu 3 standardne Unity metode sa primjerom funkcionalnosti iz pravih video igara: 
+
+93.) Prepišite skriptu i prepravite greške i dodajte komentare:
+
+int x = 11:
+float nm = 2.4;
+flaot z = 0f;
+
+void Start
+(
+	z == nM * 2.5 - X;
+)
+
+----prepravak----
+
+
+94.) x je javan broj koji je 100. Ispiši u konzoli sve parne brojeve od 0 do x.
+
+
+95.) Napisi primjer for petlje.
+
+
+96.) Prepišite skriptu i prepravite greške te joj napišite komentare
+
+flaoat X_X = 67f;
+publik float xD:
+private float c_N = 99.54321f;
+
+void Update()
+{
+	if(X_X * xD - cn >= 69.22 * 2;
+	[
+		X_X -- 19;
+		xD *= 1.2f;
+		c_M -= 1,1f;
+	]
+
+-------Prepravljeni----------
+
+
+
+97.) Prepišite skriptu i prepravite greške te joj napišite komentare
+
+boll marmun = false;
+intx = 11:
+int z = 12;
+int y:
+
+void Start[]
+{
+	if(x / 11 & z - 12 = 1)
+	{
+		marmun = true;
+		y = z * X;
+}
+
+Void Update()
+{
+	y = y * Z * x:
+}
+
+------------Prepravljeni----------------------
 
 
 
