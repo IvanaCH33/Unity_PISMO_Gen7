@@ -926,47 +926,161 @@ Php+=potion;
 
 56.) Vi imate 15€, a vaš frend 25€ i vaš treći frend ima 10.5€. Vi takvi siromasi se odlučite kupiti Bugatti Vayrona koji košta 2500000€. Ako osoba koja ima najviše novaca ima duplo više novaca od osobe koja ima najmanje novaca, onda on plaća pola cijene. A ostala dvojica djele drugu polovicu po pola. Ako to nije slučaj onda svi plačaju jednak iznos. Napisite koliko svakome pojedinacno jos fali novaca.
 
-float ja = 15f;
-float frend1 = 25f;
-float frend2 = 10.5f;
-float cijena = 2500000f;
-float jaTrebamPara;
-float frend1TrebaPara;
-float frend2TrebaPara;
+float me = 15f;
+float friendOne = 25f;
+float friendTwo = 10.5f;
+int bugatti = 2500000;
 
-if(ja == 2*frend1 || ja == 2*frend2)
+if(me > friendOne && me > friendTwo)
 {
-	jaTrebamPara = 0.5 * cijena;
-	frend1TrebaPara = 0.25 * cijena;
-	frend2TrebaPara = frend1TrebaPara;
-}        
-	
+	if(friendOne < friendTwo)
+	{
+		if(friendOne * 2 < me)
+		{
+			me -= bugatti * 0.5f;
+			friendOne -= bugatti * 0.25f;
+			friendTwo -= bugatti * 0.25f;
+		}
+		
+		else
+		{
+			me -= bugatti / 3;
+			friendOne -= bugatti / 3;
+			friendTwo -= bugatti / 3;
+		}
+	}
 
-else if(frend1 == 2*ja || frend1 == 2*frend2)
+	else if(friendTwo < friendOne)
+	{
+		if(friendTwo * 2 < me)
+		{
+			me -= bugatti * 0.5f;
+			friendOne -= bugatti * 0.25f;
+			friendTwo -= bugatti * 0.25f;
+		}
+		
+		else
+		{
+			me -= bugatti / 3;
+			friendOne -= bugatti / 3;
+			friendTwo -= bugatti / 3;
+		}
+	}
+}
+
+else if(friendOne > me && friendOne > friendTwo)
 {
-	frend1TrebaPara = 0.5 * cijena;
-	jaTrebamPara = 0.25 * cijena;
-	frend2TrebaPara = jaTrebamPara;
-}        
+	if(me < friendTwo)
+	{
+		if(me * 2 < friendOne)
+		{
+			friendOne -= bugatti * 0.5f;
+			me -= bugatti * 0.25f;
+			friendTwo -= bugatti * 0.25f;
+		}
+		
+		else
+		{
+			me -= bugatti / 3;
+			friendOne -= bugatti / 3;
+			friendTwo -= bugatti / 3;
+		}
+	}
 
+	else if(friendTwo < me)
+	{
+		if(friendTwo * 2 < friendOne)
+		{
+			frienedOne -= bugatti * 0.5f;
+			me -= bugatti * 0.25f;
+			friendTwo -= bugatti * 0.25f;
+		}
+		
+		else
+		{
+			me -= bugatti / 3;
+			friendOne -= bugatti / 3;
+			friendTwo -= bugatti / 3;
+		}
+	}
+}
 
-else if(frend2 == 2*ja || frend2 == 2*frend1)
+else if(friendTwo > me && friendTwo > friendOne)
 {
-	frend2TrebaPara = 0.5 * cijena;
-	frend1TrebaPara = 0.25 * cijena;
-	jaTrebamPara = frend1TrebaPara;
-}   
+	if(me < friendOne)
+	{
+		if(me * 2 < friendTwo)
+		{
+			friendTwo -= bugatti * 0.5f;
+			me -= bugatti * 0.25f;
+			friendOne -= bugatti * 0.25f;
+		}
+		
+		else
+		{
+			me -= bugatti / 3;
+			friendOne -= bugatti / 3;
+			friendTwo -= bugatti / 3;
+		}
+	}
+
+	else if(friendOne < me)
+	{
+		if(friendOne * 2 < friendTwo)
+		{
+			frienedTwo -= bugatti * 0.5f;
+			me -= bugatti * 0.25f;
+			friendOne -= bugatti * 0.25f;
+		}
+		
+		else
+		{
+			me -= bugatti / 3;
+			friendOne -= bugatti / 3;
+			friendTwo -= bugatti / 3;
+		}
+	}
+}
 
 else
 {
-	jaTrebamPara = cijena / 3;
-	frend1TrebaPara = cijena / 3;
-	frend2TrebaPara = cijena / 3;
-}  
+	me -= bugatti / 3;
+	friendOne -= bugatti / 3;
+	friendTwo -= bugatti / 3;
+}
 
-ja -= jaTrebamPara;
-frend1 -= frend1TrebaPara;
-frend2 -= frend2TrebaPara;
+---------------------------------------------
+
+float me = 15f;
+float friendOne = 25f;
+float friendTwo = 10.5f;
+int bugatti = 2500000;
+
+if(friendOne > 2 * me || friendOne > 2 * friendTwo)
+{
+	friendOne -= bugatti * 0.5f;
+	me -= bugatti * 0.25f;
+	friendTwo -= bugatti * 0.25f;
+}
+else if(me > 2 * friendOne || me > 2 * friendTwo)
+{
+	me -= bugatti * 0.5f;
+	friendOne -= bugatti * 0.25f;
+	friendTwo -= bugatti * 0.25f;
+}
+else if(friendTwo > 2 * me || friendTwo > 2 * friendOne)
+{
+	friendTwo -= bugatti * 0.5f;
+	me -= bugatti * 0.25f;
+	friendOne -= bugatti * 0.25f;
+}
+else
+{
+	friendTwo -= bugatti * 0.33f;
+	me -= bugatti * 0.33f;
+	friendOne -= bugatti*0.33f;
+}
+
 
 
 
@@ -1764,47 +1878,48 @@ int enemies = 5;
 void Start()
 {
 	if(!easy && !normal && !harderDaddy)
-	{	
+	{
 		normal = true;
 	}
 	Spawn();
+	
 }
 
 void Spawn()
 {
-	if(easy)
+	if(easy == true)
 	{
 		enemies = 5;
-		
+
 		for(int i = 1; i <= enemies; i++)
 		{
 			Debug.Log("Stvoren je " + i + ". enemy!");
 		}
-		Debug.Log("Sretno ti u easy načinu igre");
+		Debug.Log("Sretno ti u easy nacinu igre!");
 	}
-	else if(harderDaddy)
-	{
-		enemies *= 6;
-		
-		for(int i = 1; i <= enemies; i++)
-		{
-			Debug.Log("Stvoren je " + i + ". enemy!");
-		}
-		Debug.Log("Sretno ti u harderDaddy načinu igre");
-	}
-	else
+	if(normal == true)
 	{
 		enemies *= 2;
-		
+
 		for(int i = 1; i <= enemies; i++)
 		{
 			Debug.Log("Stvoren je " + i + ". enemy!");
 		}
-		Debug.Log("Sretno ti u normal načinu igre");
+		Debug.Log("Sretno ti u normal nacinu igre!");
+	}
+	if(harderDaddy == true)
+	{
+		enemies *= 6;
+		for(int i = 1; i <= enemies; i++)
+		{
+			Debug.Log("Stvoren je " + i + ". enemy!");
+		}
+		Debug.Log("Sretno ti u harderdaddy nacinu igre!");
 	}
 }
 
-----------drugi način-----------
+----------------Drugi način--------------------
+
 public bool easy;
 public bool normal;
 public bool harderDaddy;
@@ -1814,24 +1929,23 @@ void Start()
 {
 	if(easy)
 	{
+		enemies = 5;
 		Spawn();
-		Debug.Log("Sretno ti u easy načinu igre");
+		Debug.Log("Sretno ti u easy nacinu igre!");
 	}
-	else if(normal)
-	{
-		enemies *= 2;
-		Spawn();
-		Debug.Log("Sretno ti u normal načinu igre");
-	}
-	else if(harderDaddy)
+	else if(hardredDaddy)
 	{
 		enemies *= 6;
 		Spawn();
-		Debug.Log("Sretno ti u harderDaddy načinu igre");
+		Debug.Log("Sretno ti u harderDaddy nacinu igre!");
+
 	}
 	else
 	{
-		
+		normal = true;
+		enemies *= 2;
+		Spawn();
+		Debug.Log("Sretno ti u normal nacinu igre!");
 	}
 }
 
@@ -1839,33 +1953,53 @@ void Spawn()
 {
 	for(int i = 1; i <= enemies; i++)
 	{
-		Debug.log("Stvoren je " + i + ". enemy!");
+		Debug.Log("Stvoren je " + i + ". enemy");
 	}
 }
 
 *Ponavljanje*
 86.) Kakav zapis ide u vrstu varijable int?
+Ide zapis cijelog broja: 5, -6, 0
 
 87.) Kakav zapis ide u vrstu varijable float?
 
+Decimalni brojevi: 18.8, -19.9, 21.0, 0.0
 
 88.) Kakav zapis ide u vrstu varijable bool?
 
+True ili False
 
 89.) Ako je int ostavljen prazan, vrijednost mu je?
 
+Null odnosno 0
 
 90.) Ako je bool ostavljen prazan, vrijednost mu je?
 
+Null odnosno false
 
 91.) Napišite programski matematicke zapise:
 5 * (22 - 11) / 8 = x
 9 * 7 * x / z = y
 x * 88 - 111 = z
 
+float x;
+float y;
+float z;
 
+void Start()
+{
+	x = 5 * (22 - 11) / 8;
+	z = x * 88 - 111;
+	y = 9 * 7 * x / z;
+}
 
-92.) Koja je razlika izmedu 3 standardne Unity metode sa primjerom funkcionalnosti iz pravih video igara: 
+92.) Koja je razlika izmedu 3 standardne Unity metode sa primjerom funkcionalnosti iz pravih video igara:
+
+a) Awake - prije nultog framea, samo jednom, npr. pokretanje loadinga, stvaranje sobe u multiplayeru, spawnanje enemya, spawnjanje iz baze i timer spawnanja miniona u League of Legends
+
+b) Start - prije prvog freama, samo jednom, npr. postavljanje healtha - pick up health/popijen potion u Skyrim, zadan objekt object što se treba napraviti u Dead Island
+
+c) Update - događa se u svakom frameu, npr. counter, movement u GTA, pucanje u Call of Duty, broj enemy u Serious Sam 
 
 93.) Prepišite skriptu i prepravite greške i dodajte komentare:
 
