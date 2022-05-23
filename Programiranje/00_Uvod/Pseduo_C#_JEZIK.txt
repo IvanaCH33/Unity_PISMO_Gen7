@@ -2469,11 +2469,36 @@ Ako su kilobajti 3000 ispisati "3000 KB je 2 MB i 952 KB."
 
 Tip: 1 MB (MegaBajt) je 1024 KB (kiloBajta)
 
+public int unos;
+int kb;
+int mb;
 
+void Start()
+{
+	if(unos < 0)
+	{
+		Debug.Log("Broj ne valja");
+	}
+	else if(unos > 0)
+	{
+		mb = unos / 1024;
+		kb = unos % 1024;
+		Debug.Log(usnos + " KB je " + mb + " MB i " + kb + " KB.");
+	}
+	else
+	{
+		Debug.Log("0 KB je 0 MB i 0 KB.");
+	}
+}
 
 **DZ - 108. zadatak pretvorite da možete unjeti vrijednosti u bilokojoj veličin (KB (int), MB(int), GB(float), TB(float)) i pretvara koliko je to drugih veličina
 npr. unos 10 GB će biti ispis "10 GB je 0 TB, 10 GB, 10240 MB i 10485760 KB."
 unos 2.1 TB će biti ispis "2.1 TB je 2.1 TB, 2150,5 GB, 2202009 MB i 2254857830 KB."
+
+public int kbUnos;
+public int mbUnos;
+public float gbUnos;
+public float tbUnos;
 
 109.) Što ce uciniti ova metoda Update?
 
@@ -2543,6 +2568,21 @@ izgovarati uzastopno bez prestanka. Rafaela je uocila da ce papiga svaku rijec n
 puta bez stanke. Na primjer, rijec „deda“ bit ce izgovorena kao „dedadedadedadedadeda“.
 Napiši program koji, za zadanu rijec, ispisuje papigin izgovor te rijeci.
 Npr. Deda - DedaDedaDedaDedaDeda, ho - hohohohoho
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
